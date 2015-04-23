@@ -24,6 +24,8 @@ public class ClassScheduler {
     private Timeslot[] timeslots;
     private String semesterSeason;
     private String semesterYear;
+    private Schedule[][][] allRooms;
+    
     
     public ClassScheduler()
     {
@@ -33,7 +35,8 @@ public class ClassScheduler {
         rapSheet = dbc.getRAP();
         rooms = dbc.getRooms();
         timeslots = dbc.getTimeslots();
-
+        
+        
         try {
             dbc.getConnDB().prepareStatement("delete from classschedule").execute();
         } catch (SQLException ex) {
@@ -41,6 +44,7 @@ public class ClassScheduler {
         }
         
         schedule = dbc.createSchedule(rooms,timeslots);
+        setAllRooms();
         dbc.disconnect();
     }
     
@@ -95,6 +99,7 @@ public class ClassScheduler {
                 }
             }
         }
+        saveSchedule();
     }
     
     private void getCompatibleRoom(int intSection)
@@ -440,18 +445,27 @@ public class ClassScheduler {
         return roomSchedule;
     }
     
-    public Schedule[][][] getAllRooms()
+    private void setAllRooms()
     {
-        Schedule[][][] allRooms = new Schedule[rooms.length][5][9];
+        Schedule[][][] ar = new Schedule[rooms.length][5][9];
         int i = 0;
         for(Room r: rooms)
         {
-            allRooms[i] = populateRoomData(r.getBuilding(),r.getNumber());
+            ar[i] = populateRoomData(r.getBuilding(),r.getNumber());
             i++;
         }
+        allRooms = ar;
+    }
+    
+    public void setAllRooms(Schedule[][][] allRooms) {
+        this.allRooms = allRooms;
+    }
+    
+    public Schedule[][][] getAllRooms()
+    {
         return allRooms;
     }
-            
+         
     public Course[] getRAPCourses(String major, int intSemester)
     {
         Course RAPCourse[] = new Course[rapSheet.length];

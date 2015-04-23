@@ -1,11 +1,13 @@
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.DefaultComboBoxModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -59,7 +61,85 @@ public class ScheduleView extends javax.swing.JPanel {
         fillRoomBoxes();
         initializeList();
         repaintButtons();
+        setActionListeners();
         //setTransferHandlers();
+    }
+    
+    public void setActionListeners()
+    {
+        MouseListener ml = new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JToggleButton jtb = (JToggleButton)e.getSource();
+                selectSimilar(jtb.getText());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+ 
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+            
+            
+        
+        };
+        int k;
+        for(int i=0;i<5;i++)
+        {
+            if(i == 1 || i == 3)
+                k = 8;
+            else
+                k = 9;
+            for(int j=0;j<k;j++)
+            {
+                jtbSchedule[i][j].addMouseListener(ml);
+            }
+        }
+    }
+    
+    public void selectSimilar(String strText)
+    {
+        int k;
+        for(int i=0;i<5;i++)
+        {
+            if(i == 1 || i == 3)
+                k = 8;
+            else
+                k = 9;
+            for(int j=0;j<k;j++)
+            {
+                jtbSchedule[i][j].setSelected(false);
+            }
+        }
+        for(int i=0;i<5;i++)
+        {
+            if(i == 1 || i == 3)
+                k = 8;
+            else
+                k = 9;
+            for(int j=0;j<k;j++)
+            {
+                if(jtbSchedule[i][j].getText().equals(strText))
+                {
+                    jtbSchedule[i][j].setSelected(true);
+                }
+            }
+        }        
     }
     
     public void setCS(ClassScheduler cs)
@@ -71,6 +151,14 @@ public class ScheduleView extends javax.swing.JPanel {
     public ClassScheduler getCS()
     {
         return cs;
+    }
+
+    public Schedule[][][] getAllRooms() {
+        return allRooms;
+    }
+
+    public void setAllRooms(Schedule[][][] allRooms) {
+        this.allRooms = allRooms;
     }
     
     private void fillRoomBoxes()
@@ -141,13 +229,24 @@ public class ScheduleView extends javax.swing.JPanel {
             @Override
             public void valueChanged(ListSelectionEvent e) 
             {
-                Section s = (Section)jliCourse.getSelectedValue();
-                Faculty f = s.getFaculty();
-                Course c = s.getCourse();
-                jlInstructor.setText(f.getfName() + " " + f.getlName());
-                jlCredits.setText(c.getCredits() + "");
-                jlPreferences.setText(f.getPreferredDays());
-                jlCapacity.setText(s.getCourseSize() + "");
+                if(jliCourse.getSelectedIndex() == -1)
+                {
+                    jlInstructor.setText("");
+                    jlCredits.setText("");
+                    jlPreferences.setText("");
+                    jlCapacity.setText("");
+                    //jliCourse.setSelectedIndex(0);
+                }
+                else    
+                {
+                    Section s = (Section)jliCourse.getSelectedValue();
+                    Faculty f = s.getFaculty();
+                    Course c = s.getCourse();
+                    jlInstructor.setText(f.getfName() + " " + f.getlName());
+                    jlCredits.setText(c.getCredits() + "");
+                    jlPreferences.setText(f.getPreferredDays());
+                    jlCapacity.setText(s.getCourseSize() + "");
+                }
             }
         };
         jliCourse.addListSelectionListener(lslFun);
@@ -158,11 +257,12 @@ public class ScheduleView extends javax.swing.JPanel {
     {
         Section[] sec = cs.getUnscheduled();
         int index = jliCourse.getSelectedIndex();
+        System.out.println(index);
         jliCourse.removeListSelectionListener(lslFun);
         dlmCourse.removeAllElements();
         for(Section s: sec)
             dlmCourse.addElement(s);
-        if(index < sec.length)
+        if(index < sec.length && index > 0)
             jliCourse.setSelectedIndex(index);
         jliCourse.addListSelectionListener(lslFun);
         jliCourse.setModel(dlmCourse);
@@ -225,34 +325,6 @@ public class ScheduleView extends javax.swing.JPanel {
         }
     }
     
-    private void clearButtons()
-    {
-        jtbMonday1.getModel().setPressed(false);
-        boolean bMondaySelect = false;
-        boolean bTuesdaySelect = false;
-        for(JToggleButton jtb: jtbSchedule[0])
-        {
-            if(jtb.isSelected())
-                bMondaySelect = true;
-        }
-        for(JToggleButton jtb: jtbSchedule[1])
-        {
-            if(jtb.isSelected())
-                bTuesdaySelect = true;
-        }
-        
-        if(bTuesdaySelect)
-        {
-            bgMonday.clearSelection();
-            bgWednesday.clearSelection();
-            bgFriday.clearSelection();                
-        }
-        else if(bMondaySelect)
-        {
-            bgTuesday.clearSelection();
-            bgThursday.clearSelection();        
-        }
-    }
     
     private void setTransferHandlers()
     {
@@ -280,13 +352,7 @@ public class ScheduleView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        bgMonday = new javax.swing.ButtonGroup();
-        bgTuesday = new javax.swing.ButtonGroup();
-        bgWednesday = new javax.swing.ButtonGroup();
-        bgThursday = new javax.swing.ButtonGroup();
-        bgFriday = new javax.swing.ButtonGroup();
         jpScheduler = new javax.swing.JPanel();
         jtbMonday1 = new javax.swing.JToggleButton();
         jtbMonday2 = new javax.swing.JToggleButton();
@@ -361,7 +427,6 @@ public class ScheduleView extends javax.swing.JPanel {
         jlCapacity = new javax.swing.JLabel();
 
         jtbMonday1.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday1);
         jtbMonday1.setText("<html>8:00 - 8:50<br>");
         jtbMonday1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jtbMonday1.addActionListener(new java.awt.event.ActionListener() {
@@ -371,53 +436,43 @@ public class ScheduleView extends javax.swing.JPanel {
         });
 
         jtbMonday2.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday2);
         jtbMonday2.setText("<html>9:00 - 9:50<br>");
         jtbMonday2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday3.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday3);
         jtbMonday3.setText("<html>10:00 - 10:50<br>");
         jtbMonday3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday4.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday4);
         jtbMonday4.setText("<html>11:00 - 11:50<br>");
         jtbMonday4.setToolTipText("");
         jtbMonday4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday5.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday5);
         jtbMonday5.setText("<html>12:00 - 12:50<br>");
         jtbMonday5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jMondayCommonHour.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jMondayCommonHour);
         jMondayCommonHour.setText("<html>Common Hour <br> 1:00 - 2:30");
         jMondayCommonHour.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday6.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday6);
         jtbMonday6.setText("<html>2:30 - 3:20<br>");
         jtbMonday6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday7.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday7);
         jtbMonday7.setText("<html>3:30 - 4:20<br>");
         jtbMonday7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday8.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday8);
         jtbMonday8.setText("<html>4:30 - 5:45<br>");
         jtbMonday8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbMonday9.setBackground(new java.awt.Color(255, 255, 255));
-        bgMonday.add(jtbMonday9);
         jtbMonday9.setText("<html>6:30 - 8:55<br>");
         jtbMonday9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday1.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday1);
         jtbTuesday1.setText("<html>8:00 - 9:15<br>");
         jtbTuesday1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jtbTuesday1.addActionListener(new java.awt.event.ActionListener() {
@@ -427,192 +482,145 @@ public class ScheduleView extends javax.swing.JPanel {
         });
 
         jtbTuesday2.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday2);
         jtbTuesday2.setText("<html>9:25 - 10:40<br>");
         jtbTuesday2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday4.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday4);
         jtbTuesday4.setText("<html>12:15 - 1:30<br>");
         jtbTuesday4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday3.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday3);
         jtbTuesday3.setText("<html>10:50 - 12:05<br>");
         jtbTuesday3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday5.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday5);
         jtbTuesday5.setText("<html>1:40 - 2:55<br>");
         jtbTuesday5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday6.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday6);
         jtbTuesday6.setText("<html>3:05 - 4:20<br>");
         jtbTuesday6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday7.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday7);
         jtbTuesday7.setText("<html>4:30 - 5:45<br>");
         jtbTuesday7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbTuesday8.setBackground(new java.awt.Color(255, 255, 255));
-        bgTuesday.add(jtbTuesday8);
         jtbTuesday8.setText("<html>6:30 - 8:55<br>");
         jtbTuesday8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jtbTuesday8.setMaximumSize(new java.awt.Dimension(72, 51));
 
         jtbWednesday1.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday1);
         jtbWednesday1.setText("<html>8:00 - 8:50<br>");
         jtbWednesday1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtbMonday1, org.jdesktop.beansbinding.ELProperty.create("${selected}"), jtbWednesday1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jtbWednesday2.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday2);
         jtbWednesday2.setText("<html>9:00 - 9:50<br>");
         jtbWednesday2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtbMonday2, org.jdesktop.beansbinding.ELProperty.create("${selected}"), jtbWednesday2, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jtbWednesday3.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday3);
         jtbWednesday3.setText("<html>10:00 - 10:50<br>");
         jtbWednesday3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday4.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday4);
         jtbWednesday4.setText("<html>11:00 - 11:50<br>");
         jtbWednesday4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday5.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday5);
         jtbWednesday5.setText("<html>12:00 - 12:50<br>");
         jtbWednesday5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesdayCommonHour.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesdayCommonHour);
         jtbWednesdayCommonHour.setText("<html>Common Hour <br> 1:00 - 2:30");
         jtbWednesdayCommonHour.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday6.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday6);
         jtbWednesday6.setText("<html>2:30 - 3:20<br>");
         jtbWednesday6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday7.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday7);
         jtbWednesday7.setText("<html>3:30 - 4:20<br>");
         jtbWednesday7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday8.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday8);
         jtbWednesday8.setText("<html>4:30 - 5:45<br>");
         jtbWednesday8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbWednesday9.setBackground(new java.awt.Color(255, 255, 255));
-        bgWednesday.add(jtbWednesday9);
         jtbWednesday9.setText("<html>6:30 - 8:55<br>");
         jtbWednesday9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday1.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday1);
         jtbThursday1.setText("<html>8:00 - 9:15<br>");
         jtbThursday1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday2.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday2);
         jtbThursday2.setText("<html>9:25 - 10:40<br>");
         jtbThursday2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday3.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday3);
         jtbThursday3.setText("<html>10:50 - 12:05<br>");
         jtbThursday3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday4.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday4);
         jtbThursday4.setText("<html>12:15 - 1:30<br>");
         jtbThursday4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday5.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday5);
         jtbThursday5.setText("<html>1:40 - 2:55<br>");
         jtbThursday5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday6.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday6);
         jtbThursday6.setText("<html>3:05 - 4:20<br>");
         jtbThursday6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday7.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday7);
         jtbThursday7.setText("<html>4:30 - 5:45<br>");
         jtbThursday7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbThursday8.setBackground(new java.awt.Color(255, 255, 255));
-        bgThursday.add(jtbThursday8);
         jtbThursday8.setText("<html>6:30 - 8:55<br>");
         jtbThursday8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday9.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday9);
         jtbFriday9.setText("<html>6:30 - 8:55<br>");
         jtbFriday9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday8.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday8);
         jtbFriday8.setText("<html>4:30 - 5:45<br>");
         jtbFriday8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday7.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday7);
         jtbFriday7.setText("<html>3:30 - 4:20<br>");
         jtbFriday7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday6.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday6);
         jtbFriday6.setText("<html>2:30 - 3:20<br>");
         jtbFriday6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFridayCommonHour.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFridayCommonHour);
         jtbFridayCommonHour.setText("<html>Common Hour <br> 1:00 - 2:30");
         jtbFridayCommonHour.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday5.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday5);
         jtbFriday5.setText("<html>12:00 - 12:50<br>");
         jtbFriday5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday4.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday4);
         jtbFriday4.setText("<html>11:00 - 11:50<br>");
         jtbFriday4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday3.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday3);
         jtbFriday3.setText("<html>10:00 - 10:50<br>");
         jtbFriday3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jtbFriday2.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday2);
         jtbFriday2.setText("<html>9:00 - 9:50<br>");
         jtbFriday2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtbWednesday2, org.jdesktop.beansbinding.ELProperty.create("${selected}"), jtbFriday2, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jtbFriday1.setBackground(new java.awt.Color(255, 255, 255));
-        bgFriday.add(jtbFriday1);
         jtbFriday1.setText("<html>8:00 - 8:50<br>");
         jtbFriday1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtbWednesday1, org.jdesktop.beansbinding.ELProperty.create("${selected}"), jtbFriday1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
 
         jbAdd.setText("Add To Schedule");
         jbAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -995,8 +1003,6 @@ public class ScheduleView extends javax.swing.JPanel {
                 .addComponent(jpScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoveActionPerformed
@@ -1051,13 +1057,9 @@ public class ScheduleView extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbSemesterActionPerformed
 
     private void jtbTuesday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbTuesday1ActionPerformed
-        JToggleButton jtb = (JToggleButton)evt.getSource();
-        //jtb.getName().substring(3,2);
-        //clearButtons();
     }//GEN-LAST:event_jtbTuesday1ActionPerformed
 
     private void jtbMonday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMonday1ActionPerformed
-        //clearButtons();
     }//GEN-LAST:event_jtbMonday1ActionPerformed
 
     private void jcbRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRoomActionPerformed
@@ -1066,11 +1068,6 @@ public class ScheduleView extends javax.swing.JPanel {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup bgFriday;
-    private javax.swing.ButtonGroup bgMonday;
-    private javax.swing.ButtonGroup bgThursday;
-    private javax.swing.ButtonGroup bgTuesday;
-    private javax.swing.ButtonGroup bgWednesday;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1143,7 +1140,6 @@ public class ScheduleView extends javax.swing.JPanel {
     private javax.swing.JToggleButton jtbWednesday8;
     private javax.swing.JToggleButton jtbWednesday9;
     private javax.swing.JToggleButton jtbWednesdayCommonHour;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }

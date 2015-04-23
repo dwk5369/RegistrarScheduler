@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="bgMonday">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="bgTuesday">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="bgWednesday">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="bgThursday">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="bgFriday">
-    </Component>
-  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -327,7 +315,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;8:00 - 8:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -342,7 +330,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;9:00 - 9:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -354,7 +342,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;10:00 - 10:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -366,7 +354,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;11:00 - 11:50&lt;br&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -379,7 +367,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;12:00 - 12:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -391,7 +379,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;Common Hour &lt;br&gt; 1:00 - 2:30"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -403,7 +391,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;2:30 - 3:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -415,7 +403,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;3:30 - 4:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -427,7 +415,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;4:30 - 5:45&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -439,7 +427,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgMonday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;6:30 - 8:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -451,7 +439,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;8:00 - 9:15&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -466,7 +454,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;9:25 - 10:40&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -478,7 +466,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;12:15 - 1:30&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -490,7 +478,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;10:50 - 12:05&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -502,7 +490,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;1:40 - 2:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -514,7 +502,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;3:05 - 4:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -526,7 +514,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;4:30 - 5:45&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -538,7 +526,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgTuesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;6:30 - 8:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -553,14 +541,11 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;8:00 - 8:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jtbMonday1" sourcePath="${selected}" target="jtbWednesday1" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jtbWednesday2">
           <Properties>
@@ -568,14 +553,11 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;9:00 - 9:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jtbMonday2" sourcePath="${selected}" target="jtbWednesday2" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jtbWednesday3">
           <Properties>
@@ -583,7 +565,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;10:00 - 10:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -595,7 +577,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;11:00 - 11:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -607,7 +589,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;12:00 - 12:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -619,7 +601,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;Common Hour &lt;br&gt; 1:00 - 2:30"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -631,7 +613,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;2:30 - 3:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -643,7 +625,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;3:30 - 4:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -655,7 +637,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;4:30 - 5:45&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -667,7 +649,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgWednesday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;6:30 - 8:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -679,7 +661,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;8:00 - 9:15&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -691,7 +673,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;9:25 - 10:40&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -703,7 +685,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;10:50 - 12:05&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -715,7 +697,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;12:15 - 1:30&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -727,7 +709,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;1:40 - 2:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -739,7 +721,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;3:05 - 4:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -751,7 +733,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;4:30 - 5:45&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -763,7 +745,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgThursday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;6:30 - 8:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -775,7 +757,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;6:30 - 8:55&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -787,7 +769,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;4:30 - 5:45&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -799,7 +781,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;3:30 - 4:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -811,7 +793,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;2:30 - 3:20&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -823,7 +805,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;Common Hour &lt;br&gt; 1:00 - 2:30"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -835,7 +817,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;12:00 - 12:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -847,7 +829,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;11:00 - 11:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -859,7 +841,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;10:00 - 10:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -871,14 +853,11 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;9:00 - 9:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jtbWednesday2" sourcePath="${selected}" target="jtbFriday2" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jtbFriday1">
           <Properties>
@@ -886,14 +865,11 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgFriday"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;8:00 - 8:50&lt;br&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jtbWednesday1" sourcePath="${selected}" target="jtbFriday1" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="jbAdd">
           <Properties>

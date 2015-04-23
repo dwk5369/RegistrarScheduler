@@ -44,7 +44,9 @@ public class DBConnect
     
     protected String strGetSectionID = "select SectionID from section where FacultyID = ? and CourseID = ? and SectionNumber = ?";
     
-    protected String strGetCourseID = "select CourseID from course where FacultyID = ? and CourseID = ? and SectionNumber = ?";
+    protected String strSaveSchedule = "update classschedule set SectionID = ? where RoomID = ? and TimeslotID = ?";
+    
+    protected String strGetCourseID = "select CourseID from course where CourseName = ? and CourseNumber = ?";
     
     protected String strGetFacultyID = "select FacultyID from faculty where FName = ? and LName = ?";    
     
@@ -97,7 +99,18 @@ public class DBConnect
     
     public void saveSchedule(Schedule sched)
     {
-        
+        try 
+        {
+            psInsert = connDB.prepareStatement(strSaveSchedule);
+            psInsert.setInt(1, getSectionID(sched.getSection()));
+            psInsert.setInt(2, getRoomID(sched.getCourseRoom()));
+            psInsert.setInt(3, getTimeslotID(sched.getTimeslot()));
+            psInsert.executeUpdate();
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }             
     }
     
     public int getSectionID(Section s)
@@ -105,8 +118,9 @@ public class DBConnect
         try 
         {
             psInsert = connDB.prepareStatement(strGetSectionID);
-            //psInsert.setString(1, r.getBuilding());
-            //psInsert.setString(2, r.getNumber());
+            psInsert.setInt(1, getFacultyID(s.getFaculty()));
+            psInsert.setInt(2, getCourseID(s.getCourse()));
+            psInsert.setString(3, s.getNumber());
             rsResult = psInsert.executeQuery();
             rsResult.first();
             int id = rsResult.getInt(1);
@@ -146,8 +160,8 @@ public class DBConnect
         try 
         {
             psInsert = connDB.prepareStatement(strGetCourseID);
-            //psInsert.setString(1, r.getBuilding());
-            //psInsert.setString(2, r.getNumber());
+            psInsert.setString(1, c.getName());
+            psInsert.setString(2, c.getNumber());
             rsResult = psInsert.executeQuery();
             rsResult.first();
             int id = rsResult.getInt(1);
