@@ -65,19 +65,19 @@ public class ScheduleView extends javax.swing.JPanel {
         //setTransferHandlers();
     }
     
-    public void setActionListeners()
+    private void setActionListeners()
     {
         MouseListener ml = new MouseListener(){
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 JToggleButton jtb = (JToggleButton)e.getSource();
-                selectSimilar(jtb.getText());
+                selectSimilar(jtb.getText()); 
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
- 
+
             }
 
             @Override
@@ -250,14 +250,13 @@ public class ScheduleView extends javax.swing.JPanel {
             }
         };
         jliCourse.addListSelectionListener(lslFun);
-        jliCourse.setModel(dlmCourse);
+        jliCourse.setModel(dlmCourse);        
     }
     
     private void maintainList()
     {
         Section[] sec = cs.getUnscheduled();
         int index = jliCourse.getSelectedIndex();
-        System.out.println(index);
         jliCourse.removeListSelectionListener(lslFun);
         dlmCourse.removeAllElements();
         for(Section s: sec)
@@ -425,6 +424,18 @@ public class ScheduleView extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jlInstructor = new javax.swing.JLabel();
         jlCapacity = new javax.swing.JLabel();
+
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+
+        jpScheduler.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpSchedulerFocusGained(evt);
+            }
+        });
 
         jtbMonday1.setBackground(new java.awt.Color(255, 255, 255));
         jtbMonday1.setText("<html>8:00 - 8:50<br>");
@@ -634,6 +645,11 @@ public class ScheduleView extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jliCourse);
 
         jbSave.setText("Save Schedule");
+        jbSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSaveActionPerformed(evt);
+            }
+        });
 
         jbRemove.setText("Remove From Schedule");
         jbRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -1006,7 +1022,35 @@ public class ScheduleView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoveActionPerformed
-        // TODO add your handling code here:
+        Section sToRemove = new Section();
+        String room = jcbRoom.getSelectedItem().toString() + " " + jcbRoomNo.getSelectedItem().toString();
+        int roomNo = 0;
+        
+        for(int x = 0;x < allRooms.length;x++)
+        {
+            if(allRooms[x][0][0].getCourseRoom().toString().equals(room))
+                roomNo = x;
+        }
+        
+        
+        int k;
+        for(int i = 0;i < jtbSchedule.length;i++)
+        {
+            if(i == 1 || i == 3)
+                k = 8;
+            else
+                k = 9;
+            for(int j = 0;j < k;j++)
+            {
+                if(jtbSchedule[i][j].isSelected())
+                {
+                    sToRemove = allRooms[roomNo][i][j].getSection();
+                    roomSchedule[i][j].setSection(new Section());
+                    
+                    repaintButtons();
+                }
+            }
+        }
     }//GEN-LAST:event_jbRemoveActionPerformed
 
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
@@ -1065,6 +1109,18 @@ public class ScheduleView extends javax.swing.JPanel {
     private void jcbRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRoomActionPerformed
         fillComboBoxes();
     }//GEN-LAST:event_jcbRoomActionPerformed
+
+    private void jpSchedulerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpSchedulerFocusGained
+        
+    }//GEN-LAST:event_jpSchedulerFocusGained
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+
+    }//GEN-LAST:event_formFocusGained
+
+    private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
+        cs.saveSchedule();
+    }//GEN-LAST:event_jbSaveActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
