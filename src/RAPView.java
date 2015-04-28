@@ -28,6 +28,7 @@ public class RAPView extends javax.swing.JPanel {
     public RAPView() {
         initComponents();
         inputTable = new DefaultTableModel(columnHeaders,0);
+        jtSchedule.setEnabled(false);
         dlmCourse = new DefaultListModel();
         jList1.setModel(dlmCourse);
         jtSchedule.setModel(inputTable);

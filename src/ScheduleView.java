@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.DefaultComboBoxModel;
@@ -15,7 +17,7 @@ import javax.swing.event.ListSelectionListener;
  */
 
 /**
- *
+ *May 5th 1pm presentation
  * @author dwk5369
  */
 public class ScheduleView extends javax.swing.JPanel {
@@ -67,37 +69,16 @@ public class ScheduleView extends javax.swing.JPanel {
     
     private void setActionListeners()
     {
-        MouseListener ml = new MouseListener(){
+        ActionListener al = new ActionListener(){
 
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 JToggleButton jtb = (JToggleButton)e.getSource();
                 selectSimilar(jtb.getText()); 
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
             
-            
-        
         };
+   
         int k;
         for(int i=0;i<5;i++)
         {
@@ -107,7 +88,7 @@ public class ScheduleView extends javax.swing.JPanel {
                 k = 9;
             for(int j=0;j<k;j++)
             {
-                jtbSchedule[i][j].addMouseListener(ml);
+                jtbSchedule[i][j].addActionListener(al);
             }
         }
     }
@@ -300,7 +281,7 @@ public class ScheduleView extends javax.swing.JPanel {
         for(Course c: rap)
         {
 
-            for(x=0;x<DataGet.roomData.length;x++)
+            for(x=0;x<cs.getRooms().length;x++)
             {
                 for(i=0;i<5;i++)
                 {
@@ -327,15 +308,18 @@ public class ScheduleView extends javax.swing.JPanel {
     
     private void setTransferHandlers()
     {
-        jtbMonday1.setTransferHandler(new TransferHandler("text"));
-        jtbMonday2.setTransferHandler(new TransferHandler("text"));
-        jtbMonday3.setTransferHandler(new TransferHandler("text"));
-        jtbMonday4.setTransferHandler(new TransferHandler("text")); 
-        jtbMonday5.setTransferHandler(new TransferHandler("text"));
-        jtbMonday6.setTransferHandler(new TransferHandler("text")); 
-        jtbMonday7.setTransferHandler(new TransferHandler("text"));
-        jtbMonday8.setTransferHandler(new TransferHandler("text"));
-        jtbMonday9.setTransferHandler(new TransferHandler("text")); 
+        int k;
+        for(int i=0;i<5;i++)
+        {
+            if(i == 1 || i == 3)
+                k = 8;
+            else
+                k = 9;
+            for(int j=0;j<k;j++)
+            {
+                jtbSchedule[i][j].setTransferHandler(new TransferHandler("text"));
+            }
+        }
     }
 
     public void doSchedule()
@@ -1119,7 +1103,7 @@ public class ScheduleView extends javax.swing.JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
-        cs.saveSchedule();
+        cs.saveSchedule(allRooms);
     }//GEN-LAST:event_jbSaveActionPerformed
 
     

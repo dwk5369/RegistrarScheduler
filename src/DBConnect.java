@@ -42,7 +42,7 @@ public class DBConnect
     
     protected String strGetRoomID = "select RoomID from rooms where BuildingName = ? and RoomNumber = ?";
     
-    protected String strGetSectionID = "select SectionID from section where FacultyID = ? and CourseID = ? and SectionNumber = ?";
+    protected String strGetSectionID = "select SectionID from section where FacultyID = ? and CourseID = ? and SectionNumber like ?";
     
     protected String strSaveSchedule = "update classschedule set SectionID = ? where RoomID = ? and TimeslotID = ?";
     
@@ -101,11 +101,17 @@ public class DBConnect
     {
         try 
         {
-            psInsert = connDB.prepareStatement(strSaveSchedule);
-            psInsert.setInt(1, getSectionID(sched.getSection()));
-            psInsert.setInt(2, getRoomID(sched.getCourseRoom()));
-            psInsert.setInt(3, getTimeslotID(sched.getTimeslot()));
-            psInsert.executeUpdate();
+            int secID = getSectionID(sched.getSection());
+            int rID = getRoomID(sched.getCourseRoom());
+            int tID = getTimeslotID(sched.getTimeslot());
+            if(secID != 0)
+            {
+                psInsert = connDB.prepareStatement(strSaveSchedule);
+                psInsert.setInt(1, secID);
+                psInsert.setInt(2, rID);
+                psInsert.setInt(3, tID);
+                psInsert.executeUpdate();
+            }
         } 
         catch (SQLException ex) 
         {
@@ -117,10 +123,12 @@ public class DBConnect
     {
         try 
         {
+            int fid = getFacultyID(s.getFaculty());
+            int cid = getCourseID(s.getCourse());
             psInsert = connDB.prepareStatement(strGetSectionID);
-            psInsert.setInt(1, getFacultyID(s.getFaculty()));
-            psInsert.setInt(2, getCourseID(s.getCourse()));
-            psInsert.setString(3, s.getNumber());
+            psInsert.setInt(1, fid);
+            psInsert.setInt(2, cid);
+            psInsert.setString(3, s.getNumber().trim() + "%");
             rsResult = psInsert.executeQuery();
             rsResult.first();
             int id = rsResult.getInt(1);
@@ -128,7 +136,7 @@ public class DBConnect
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+
             return 0;
         }          
         

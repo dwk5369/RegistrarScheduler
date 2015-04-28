@@ -99,7 +99,7 @@ public class ClassScheduler {
                 }
             }
         }
-        saveSchedule();
+        //saveSchedule(allRooms);
     }
     
     private void getCompatibleRoom(int intSection)
@@ -184,25 +184,56 @@ public class ClassScheduler {
         Schedule sT = searchSchedule(sched,"T");
         Schedule sW = searchSchedule(sched,"W");
         Schedule sH = searchSchedule(sched,"H");
+        Schedule sF = searchSchedule(sched,"F");
         Schedule s;
         //Schedule[][] roomSched = populateRoomData(sched.getCourseRoom().getBuilding(),sched.getCourseRoom().getNumber());
+        
         if(compareTimeslots(sec.getFaculty().getStartTime(),sched.getTimeslot().getStartTime()) >= 0 && compareTimeslots(sec.getFaculty().getEndTime(),sched.getTimeslot().getEndTime()) <= 0)
         {
+            String days = sec.getFaculty().getPreferredDays();
+            /*
+            if(days.contains("M") && days.contains("W") && days.contains("F"))
+            {
+                sM.setSection(sec);
+                sW.setSection(sec);
+                sF.setSection(sec);
+            }
+            else if(days.contains("T") && days.contains("H"))
+            {
+                sT.setSection(sec);
+                sH.setSection(sec);
+            }
             
-            if(sec.getFaculty().getPreferredDays().contains(sched.getTimeslot().getDayOfWeek()))
+            */
+            if(days.contains(sched.getTimeslot().getDayOfWeek()))
             //if(sec.getFaculty().getPreferredDays().contains("M") && sec.getFaculty().getPreferredDays().contains("W") && sec.getFaculty().getPreferredDays().contains("F"))    
             {
                 
-                
-                
+                for(char c:days.toCharArray())
+                {
+                    int i = 0;
+                    switch(c)
+                    {
+                        case 'M':
+                            break;
+                        case 'T':
+                            break;
+                        case 'W':
+                            break;
+                        case 'H':
+                            break;
+                        case 'F':
+                            break;
+                    }
+                }
                 switch(sched.getTimeslot().getDayOfWeek())
                 {
                     case "M":
                         s = searchSchedule(sched,"W");
-                        if(!s.hasSection())
+                        if(!s.hasSection() && days.contains("W"))
                             s.setSection(sec);
                         s = searchSchedule(sched,"F");
-                        if(!s.hasSection())
+                        if(!s.hasSection() && days.contains("F"))
                             s.setSection(sec);
                         sched.setSection(sec);
                         break;
@@ -287,9 +318,25 @@ public class ClassScheduler {
         return maj;
     }
     
-    public void saveSchedule()
+    public void saveSchedule(Schedule[][][] sched)
     {
-        
+        dbc.connect();
+        int k;
+        for(int x=0;x<rooms.length;x++)
+        {
+            for(int i=0;i<5;i++)
+            {
+                if(i == 1 || i == 3)
+                    k = 8;
+                else
+                    k = 9;
+                for(int j=0;j<k;j++)
+                {
+                    dbc.saveSchedule(allRooms[x][i][j]);
+                }
+            }        
+        }
+        dbc.disconnect();
     }
 
 

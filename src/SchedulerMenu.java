@@ -18,6 +18,9 @@ public class SchedulerMenu extends javax.swing.JFrame {
     RAPView jpRAP;
     ConflictView jpConflict;
     ClassScheduler cs;
+    String semesterName;
+    String semesterYear;
+    
     /**
      * Creates new form SchedulerMenu
      */
@@ -42,6 +45,9 @@ public class SchedulerMenu extends javax.swing.JFrame {
 
         jpWelcome = new javax.swing.JPanel();
         jbBegin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiQuit = new javax.swing.JMenuItem();
@@ -59,21 +65,44 @@ public class SchedulerMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Welcome to the eRegistrar Class Scheduler!");
+
+        jLabel2.setText("To start scheduling, click the button below!");
+
+        jLabel3.setText("To load a schedule from a previous semester, use File>Load");
+
         javax.swing.GroupLayout jpWelcomeLayout = new javax.swing.GroupLayout(jpWelcome);
         jpWelcome.setLayout(jpWelcomeLayout);
         jpWelcomeLayout.setHorizontalGroup(
             jpWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpWelcomeLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jbBegin)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGroup(jpWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpWelcomeLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel2))
+                    .addGroup(jpWelcomeLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jpWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpWelcomeLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jbBegin)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jpWelcomeLayout.setVerticalGroup(
             jpWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpWelcomeLayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbBegin)
-                .addGap(40, 40, 40))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -123,13 +152,11 @@ public class SchedulerMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -225,6 +252,9 @@ public class SchedulerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
